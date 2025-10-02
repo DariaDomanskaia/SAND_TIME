@@ -1,0 +1,415 @@
+@media screen and (max-width: 820px) {
+    body {
+        header {
+            display: none;
+        }
+        main {
+            .container {
+                padding: 0 17px !important;
+            }
+            h2 {
+                font-size: 40px !important;
+            }
+            .promo {
+                .container {
+                    .title h1 {
+                        font-size: 140px;
+                    }
+                    .title-sand {
+                        width: 50%;
+                        top: -40px;
+                        left: 200px;
+                    }
+                    .scroll-btn {
+                        left: 380px;
+                        top: 360px;
+                    }
+                }
+            }
+            .sand-show {
+                padding: 230px 0 120px 0;
+                background-size: 100%;
+                .container {
+                    .sand-headtitle {
+                        width: 40%;
+                        top: 190px;
+                        left: 0px;
+                    }
+                    .sand-show-info {
+                        .sand-show-title {
+                            .h2-second {
+                                margin-left: 140px;
+                            }
+                        }
+                        .sand-show-desc {
+                            max-width: 400px;
+                            gap: 40px;
+                            .leave-request {
+                                margin-left: 0;
+                            }
+                        }
+                    }
+                    .advantages {
+                        gap: 34px;
+                        margin-bottom: 32px;
+                    }
+                }
+            }
+            .activities {
+                .container {
+                    h2 {
+                        margin-bottom: 40px;
+                    }
+                    .activities-grid {
+                        grid-template-columns: repeat(2, 377px);
+                        .activity {
+                            .activity-info {
+                                max-width: 377px;
+                            }
+                            .activity-icon-wrap {
+                                padding: 10px;
+                                .activities-icon {
+                                    width: 30px;
+                                    height: 30px;
+                                }
+                            }
+                        }
+                    }
+                }
+                .hand-4 {
+                    width: 270px;
+                    height: 240px;
+                    bottom: -55px;
+                    left: -50px;
+                }
+            }
+            .services {
+                padding: 50px 0 120px;
+                background-image: url(/images/BG-Services-820.svg);
+                .container {
+                    .sand-headtitle.second {
+                        width: 25%;
+                        top: 13px;
+                        left: 0px;
+                    }
+                    h2 {
+                        margin-bottom: 40px;
+                    }
+                    .services-grid {
+                        grid-template-columns: repeat(2, 373px);
+                        grid-template-rows: repeat(2, 390px);
+                        row-gap: 24px;
+                        column-gap: 40px;
+                        align-items: baseline;
+                        .service {
+                            width: 373px;
+                            flex-direction: column-reverse;
+                            border-top: none;
+                            height: 390px;
+                            gap: 0;
+                            .service-info {
+                                margin: 0;
+                                padding: 0;
+                                margin-top: 12px;
+                                justify-content: space-between;
+                                .service-desc p {
+                                    max-width: 86%;
+                                }
+                                .service-btn {
+                                    margin-bottom: 8px;
+                                    font-size: 14px;
+                                }
+                            }
+                            .service-img {
+                                img {
+                                    width: 373px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .author {
+                .container {
+                    .author-info-wrap {
+                        margin-bottom: 40px;
+                        .author-info {
+                            h2:last-of-type {
+                                margin-left: 160px;
+                            }
+                            .author-info-desc {
+                                max-width: 445px;
+                            }
+                        }
+                        .author-img {
+                            img {
+                                max-width: 302px;
+                            }
+                        }
+                    }
+                    .accordion {
+                        gap: 12px;
+                        .accordion-item {
+                            .accordion-header {
+                                min-height: 75px;
+                                .accordion-item-info {
+                                    justify-content: space-between;
+                                    align-items: self-start;
+                                    display: flex;
+                                    flex-direction: column;
+                                    gap: 8px;
+                                    .accordion-title {
+                                        max-width: 100%;
+                                    }
+                                    .accordion-desc {
+                                        display: none;
+                                    }
+                                    .accordion-desc-year {
+                                        display: block;
+                                    }
+                                    .year {
+                                        display: none;
+                                    }
+                                }
+                            }
+                            .accordion-body {
+                                .slider {
+                                    height: 283px;
+                                    .slider-container {
+                                        .slider-slide {
+                                            img {
+                                                max-width: 338px;
+                                                height: 240px;
+                                            }
+                                        }
+                                    }
+                                    .slider-controls {
+                                        .slider-arrow.prev {
+                                            top: 100px;
+                                            left: -15px;
+                                        }
+                                        .slider-arrow.next {
+                                            top: 100px;
+                                            right: -15px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .hand-5 {
+                    display: block;
+                    position: absolute;
+                    width: 50%;
+                    bottom: -124px;
+                    right: -210px;
+                }
+            }
+            .portfolio {
+                .container {
+                    h2 {
+                        margin-bottom: 40px;
+                    }
+                    .portfolio-wrap {
+                        .portfolio-content.active {
+                            .content-type.active {
+                                grid-template-columns: repeat(2, 387px);
+                                grid-template-rows: repeat(4, 280px);
+                                gap: 12px;
+                                max-width: 786px;
+                                .portfolio-item {
+                                    width: 387px;
+                                    height: 280px;
+                                    img {
+                                        width: 387px;
+                                        height: 280px;
+                                    }
+                                }
+                                .portfolio-item:nth-child(1) {
+                                    grid-column-start: 1;
+                                    grid-column-end: 2;
+                                    grid-row-start: 1;
+                                    grid-row-end: 2;
+                                }
+                                .portfolio-item:nth-child(2) {
+                                    grid-column-start: 2;
+                                    grid-column-end: 3;
+                                    grid-row-start: 1;
+                                    grid-row-end: 1;
+                                }
+                                .portfolio-item:nth-child(3) {
+                                    grid-column-start: 1;
+                                    grid-column-end: 2;
+                                    grid-row-start: 2;
+                                    grid-row-end: 2;
+                                }
+                                .portfolio-item:nth-child(4) {
+                                    grid-column-start: 2;
+                                    grid-column-end: 3;
+                                    grid-row-start: 2;
+                                    grid-row-end: 2;
+                                    img {
+                                        width: 387px;
+                                        height: 280px;
+                                    }
+                                }
+                                .portfolio-item:nth-child(5) {
+                                    grid-column-start: 1;
+                                    grid-column-end: 2;
+                                    grid-row-start: 3;
+                                    grid-row-end: 3;
+                                    img {
+                                        width: 387px;
+                                        height: 280px;
+                                    }
+                                }
+                                .portfolio-item:nth-child(6) {
+                                    grid-column-start: 2;
+                                    grid-column-end: 3;
+                                    grid-row-start: 3;
+                                    grid-row-end: 3;
+                                    img {
+                                        width: 387px;
+                                        height: 280px;
+                                    }
+                                }
+                                .portfolio-item:nth-child(7) {
+                                    grid-column-start: 1;
+                                    grid-column-end: 3;
+                                    grid-row-start: 4;
+                                    grid-row-end: 4;
+                                    img,
+                                    iframe {
+                                        width: 786px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .price {
+                padding: 0 0 130px 0;
+                height: 888px;
+                .container {
+                    .price-wrap {
+                        display: grid;
+                        grid-template-columns: repeat(2, 381px);
+                        grid-template-rows: repeat(2, 1fr);
+                        gap: 24px;
+                        width: 786px;
+                        height: 773px;
+                        .price-card {
+                            width: 381px;
+                        }
+                        .price-card:nth-child(1) {
+                            grid-column: 1 / 1;
+                            grid-row: 1 / 1;
+                        }
+                        .price-card:nth-child(2) {
+                            grid-column: 2 / 2;
+                            grid-row: 1 / 1;
+                        }
+                        .price-card:last-child {
+                            height: 315px;
+                            width: 786px;
+                            grid-column: 1 / 2;
+                            grid-row: 2 / 2;
+                        }
+                    }
+                }
+            }
+            .news {
+                .container {
+                    .news-wrap {
+                        .news-items-wrap {
+                            grid-template-columns: repeat(2, 1fr);
+                            grid-template-rows: 1fr;
+                            gap: 24px;
+                            height: 470px;
+                            .news-item {
+                                gap: 14px;
+                                min-height: 460px;
+                                .news-info {
+                                    img {
+                                        width: 381px;
+                                    }
+                                }
+                            }
+                            .news-item:nth-child(n + 3) {
+                                opacity: 0;
+                                overflow: hidden;
+                            }
+                        }
+                        .news-items-wrap.more {
+                            height: 940px;
+                            grid-template-rows: repeat(2, 1fr);
+                            .news-item:nth-child(3),
+                            .news-item:nth-child(4) {
+                                opacity: 1;
+                            }
+                            .news-item:nth-child(n + 5) {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+            .form {
+                background-image: url(/images/BgForm-820.png);
+                .container {
+                    .form-flex {
+                        flex-direction: column;
+                        .form-wrap {
+                            height: 930px;
+                            gap: 25px;
+                            .form-info {
+                                max-width: 425px;
+                                .form-title {
+                                    img {
+                                        top: -30px;
+                                    }
+                                }
+                            }
+                            form {
+                                max-width: 789px;
+                                .input-group {
+                                    input,
+                                    .custom-select {
+                                        width: 100%;
+                                        select {
+                                            width: 789px;
+                                        }
+                                    }
+                                }
+                            }
+                            .btn-send {
+                                max-width: 100%;
+                                justify-content: center;
+                            }
+                        }
+                        .form-img {
+                            position: absolute;
+                            svg {
+                                width: 400px;
+                            }
+                        }
+                    }
+                    .head-img {
+                        top: 880px;
+                        svg {
+                            width: 70px;
+                        }
+                    }
+                    .hand-img {
+                        top: 800px;
+                        svg {
+                            width: 280px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
