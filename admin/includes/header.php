@@ -41,6 +41,12 @@ $current_page = basename($_SERVER['PHP_SELF']);
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link <?= ($current_page == 'works.php' || strpos($current_page, 'works/') !== false) ? 'active' : '' ?>" 
+                        href="works/">
+                        <i class="bi bi-card-image"></i> Работы
+                         </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link <?= ($current_page == 'prices.php') ? 'active' : '' ?>" 
                            href="#">
                            <i class="bi bi-tags"></i> Цены
