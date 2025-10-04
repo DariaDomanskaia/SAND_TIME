@@ -1,8 +1,5 @@
-// Инициализация аккордеона
-function initAccordion() {
+document.addEventListener('DOMContentLoaded', function () {
     const accordion = document.querySelector('.accordion');
-    if (!accordion) return;
-
     const accordionItems = document.querySelectorAll('.accordion-item');
     const accordionBodies = document.querySelectorAll('.accordion-body');
 
@@ -34,13 +31,53 @@ function initAccordion() {
             item.classList.add('active');
             // Устанавливаем небольшую задержку для плавной анимации
             setTimeout(() => {
-                body.style.maxHeight = body.scrollHeight + 'px';
+                body.style.maxHeight = '500px';
                 body.style.opacity = '1';
             }, 10);
         }
     });
 
-    console.log('Аккордеон инициализирован');
-}
+    // Инициализация слайдеров
+    function initSliders() {
+        const sliders = document.querySelectorAll('.slider');
 
-export { initAccordion };
+        sliders.forEach(slider => {
+            const container = slider.querySelector('.slider-container');
+            const slides = slider.querySelectorAll('.slider-slide');
+            const bullets = slider.querySelectorAll('.slider-bullet');
+            const prevBtn = slider.querySelector('.slider-arrow.prev');
+            const nextBtn = slider.querySelector('.slider-arrow.next');
+
+            let currentSlide = 0;
+
+            // Функция для переключения слайдов
+            function goToSlide(index) {
+                if (index < 0) index = slides.length - 1;
+                if (index >= slides.length) index = 0;
+
+                currentSlide = index;
+                container.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+                // Обновляем пагинацию
+                bullets.forEach((bullet, i) => {
+                    bullet.classList.toggle('active', i === currentSlide);
+                });
+            }
+
+            // Обработчики событий для стрелок
+            prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+            nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+
+            // Обработчики событий для пагинации
+            bullets.forEach((bullet, index) => {
+                bullet.addEventListener('click', () => goToSlide(index));
+            });
+
+            // Инициализация первого слайда
+            goToSlide(0);
+        });
+    }
+
+    // Инициализируем слайдеры после загрузки DOM
+    initSliders();
+});

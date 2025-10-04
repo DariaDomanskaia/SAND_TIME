@@ -1,4 +1,4 @@
-function initPrice() {
+document.addEventListener('DOMContentLoaded', function () {
     const requirementsElements = document.querySelectorAll('.requirements');
 
     requirementsElements.forEach(requirements => {
@@ -7,8 +7,4 @@ function initPrice() {
             priceCard.classList.toggle('active');
         });
     });
-
-    console.log('Цены инициализированы');
-}
-
-export { initPrice };
+});
