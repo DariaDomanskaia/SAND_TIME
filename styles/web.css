@@ -466,30 +466,28 @@
   body .header-mobile .container .header-wrap .logo-n-navigation .navigation ul {
     gap: 30px;
   }
-  body .header-mobile .container .header-wrap .logo-n-navigation .navigation ul li {
+  body .header-mobile .container .header-wrap .logo-n-navigation .navigation ul li a {
+    font-size: 12px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 5px;
   }
-  body .header-mobile .container .header-wrap .logo-n-navigation .navigation ul li a {
-    font-size: 12px;
-  }
-  body .header-mobile .container .header-wrap .logo-n-navigation .navigation ul li .nav-icon.before {
+  body .header-mobile .container .header-wrap .logo-n-navigation .navigation ul li a .nav-icon.before {
     visibility: visible;
     opacity: 1;
   }
-  body .header-mobile .container .header-wrap .logo-n-navigation .navigation ul li .nav-icon.after {
+  body .header-mobile .container .header-wrap .logo-n-navigation .navigation ul li a .nav-icon.after {
     display: none;
     visibility: hidden;
     opacity: 0;
   }
-  body .header-mobile .container .header-wrap .logo-n-navigation .navigation ul li .nav-icon.before:focus {
+  body .header-mobile .container .header-wrap .logo-n-navigation .navigation ul li a:active .nav-icon.before {
     opacity: 0;
     visibility: hidden;
     display: none;
   }
-  body .header-mobile .container .header-wrap .logo-n-navigation .navigation ul li .nav-icon.after:focus {
+  body .header-mobile .container .header-wrap .logo-n-navigation .navigation ul li a:active .nav-icon.after {
     opacity: 1;
     visibility: visible;
     display: block;
@@ -528,7 +526,7 @@
     display: none;
   }
   body main .sand-show {
-    padding: 120px 0 100px 0;
+    padding: 120px 0 70px 0;
     background-image: url(/images/BgSandshow-370.png);
   }
   body main .sand-show .container .sand-headtitle {

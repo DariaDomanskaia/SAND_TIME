@@ -546,31 +546,33 @@
                             ul {
                                 gap: 30px;
                                 li {
-                                    display: flex;
-                                    flex-direction: column;
-                                    align-items: center;
-                                    gap: 5px;
                                     a {
                                         font-size: 12px;
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+                                        gap: 5px;
+                                        .nav-icon.before {
+                                            visibility: visible;
+                                            opacity: 1;
+                                        }
+                                        .nav-icon.after {
+                                            display: none;
+                                            visibility: hidden;
+                                            opacity: 0;
+                                        }
                                     }
-                                    .nav-icon.before {
-                                        visibility: visible;
-                                        opacity: 1;
-                                    }
-                                    .nav-icon.after {
-                                        display: none;
-                                        visibility: hidden;
-                                        opacity: 0;
-                                    }
-                                    .nav-icon.before:focus {
-                                        opacity: 0;
-                                        visibility: hidden;
-                                        display: none;
-                                    }
-                                    .nav-icon.after:focus {
-                                        opacity: 1;
-                                        visibility: visible;
-                                        display: block;
+                                    a:active {
+                                        .nav-icon.before {
+                                            opacity: 0;
+                                            visibility: hidden;
+                                            display: none;
+                                        }
+                                        .nav-icon.after {
+                                            opacity: 1;
+                                            visibility: visible;
+                                            display: block;
+                                        }
                                     }
                                 }
                             }
@@ -620,7 +622,7 @@
                 }
             }
             .sand-show {
-                padding: 120px 0 100px 0;
+                padding: 120px 0 70px 0;
                 background-image: url(/images/BgSandshow-370.png);
                 .container {
                     .sand-headtitle {
