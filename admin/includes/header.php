@@ -1,8 +1,20 @@
 <?php
 session_start();
 
+// Определяем базовый путь для корректных ссылок
+$base_path = '/admin/';
+
 // Определяем активный раздел
-$current_page = basename($_SERVER['PHP_SELF']);
+$current_script = $_SERVER['SCRIPT_NAME'];
+$active_section = '';
+
+if (strpos($current_script, '/works/') !== false) {
+    $active_section = 'works';
+} elseif (basename($current_script) == 'index.php' && strpos($current_script, '/works/') === false) {
+    $active_section = 'services';
+} elseif (basename($current_script) == 'author.php') {
+    $active_section = 'author';
+}
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -22,39 +34,37 @@ $current_page = basename($_SERVER['PHP_SELF']);
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.php">SandArt Admin</a>
+            <a class="navbar-brand" href="<?= $base_path ?>index.php">SandArt Admin</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link <?= ($current_page == 'index.php') ? 'active' : '' ?>" 
-                           href="index.php">
+                        <a class="nav-link <?= ($active_section == 'services') ? 'active' : '' ?>" 
+                           href="<?= $base_path ?>index.php">
                            <i class="bi bi-list-check"></i> Услуги
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= ($current_page == 'author.php') ? 'active' : '' ?>" 
-                           href="author.php">
+                        <a class="nav-link <?= ($active_section == 'author') ? 'active' : '' ?>" 
+                           href="<?= $base_path ?>author.php">
                            <i class="bi bi-person"></i> Об авторе
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= ($current_page == 'works.php' || strpos($current_page, 'works/') !== false) ? 'active' : '' ?>" 
-                        href="works/">
-                        <i class="bi bi-card-image"></i> Работы
-                         </a>
+                        <a class="nav-link <?= ($active_section == 'works') ? 'active' : '' ?>" 
+                           href="<?= $base_path ?>works/">
+                           <i class="bi bi-card-image"></i> Работы
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= ($current_page == 'prices.php') ? 'active' : '' ?>" 
-                           href="#">
+                        <a class="nav-link" href="#">
                            <i class="bi bi-tags"></i> Цены
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= ($current_page == 'gallery.php') ? 'active' : '' ?>" 
-                           href="#">
+                        <a class="nav-link" href="#">
                            <i class="bi bi-images"></i> Галерея
                         </a>
                     </li>
