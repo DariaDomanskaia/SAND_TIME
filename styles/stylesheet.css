@@ -49,41 +49,41 @@ body {
   background-color: #f5f5f5;
   font-family: "Roboto", sans-serif;
 }
-body header {
+body .header-desktop {
   background-color: #f5e9d4;
 }
-body header .container {
+body .header-desktop .container {
   max-width: 1300px;
   margin: 0 auto;
 }
-body header .container .header-wrap {
+body .header-desktop .container .header-wrap {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 10px 0;
 }
-body header .container .header-wrap .logo-n-navigation {
+body .header-desktop .container .header-wrap .logo-n-navigation {
   display: flex;
   flex-direction: row;
   gap: 45px;
   align-items: center;
 }
-body header .container .header-wrap .logo-n-navigation nav ul {
+body .header-desktop .container .header-wrap .logo-n-navigation nav ul {
   display: flex;
   flex-direction: row;
   gap: 40px;
 }
-body header .container .header-wrap .header-actions {
+body .header-desktop .container .header-wrap .header-actions {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 24px;
 }
-body header .container .header-wrap .header-actions .phone-link {
+body .header-desktop .container .header-wrap .header-actions .phone-link {
   width: 40px;
   height: 40px;
 }
-body header .container .header-wrap .header-actions .leave-request {
+body .header-desktop .container .header-wrap .header-actions .leave-request {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -95,7 +95,7 @@ body header .container .header-wrap .header-actions .leave-request {
   font-size: 16px;
   cursor: pointer;
 }
-body header .container .header-wrap .header-actions .leave-request .arrow-right-btn {
+body .header-desktop .container .header-wrap .header-actions .leave-request .arrow-right-btn {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -106,6 +106,152 @@ body header .container .header-wrap .header-actions .leave-request .arrow-right-
 }
 body .header-laptop {
   display: none;
+  background-color: #f5f5f5;
+}
+body .header-laptop .container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+body .header-laptop .container .header-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+body .header-laptop .container .header-wrap .logo-n-navigation {
+  display: flex;
+  flex-direction: row;
+  gap: 45px;
+  align-items: center;
+}
+body .header-laptop .container .header-wrap .logo-n-navigation nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+body .header-laptop .container .header-wrap .header-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+body .header-laptop .container .header-wrap .header-actions .phone-link {
+  width: 40px;
+  height: 40px;
+}
+body .header-laptop .container .header-wrap .header-actions .leave-request {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  background-color: #e75512;
+  border-radius: 40px;
+  padding: 5px 10px 5px 5px;
+  color: #f5f5f5;
+  font-size: 16px;
+  cursor: pointer;
+}
+body .header-laptop .container .header-wrap .header-actions .leave-request .arrow-right-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #f5f5f5;
+  width: 32px;
+  height: 32px;
+  border-radius: 20px;
+}
+body .header-mobile {
+  display: none;
+  background-color: #f5f5f5;
+}
+body .header-mobile .container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+body .header-mobile .container .header-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+body .header-mobile .container .header-wrap .logo-n-navigation {
+  display: flex;
+  flex-direction: row;
+  gap: 45px;
+  align-items: center;
+}
+body .header-mobile .container .header-wrap .logo-n-navigation nav ul {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+body .header-mobile .container .header-wrap .header-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 24px;
+}
+body .header-mobile .container .header-wrap .header-actions .phone-link {
+  width: 40px;
+  height: 40px;
+}
+body .header-mobile .container .header-wrap .header-actions .leave-request {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  background-color: #e75512;
+  border-radius: 40px;
+  padding: 5px 10px 5px 5px;
+  color: #f5f5f5;
+  font-size: 16px;
+  cursor: pointer;
+}
+body .header-mobile .container .header-wrap .header-actions .leave-request .arrow-right-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #f5f5f5;
+  width: 32px;
+  height: 32px;
+  border-radius: 20px;
+}
+body .header-mobile .menu-more-mobile {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #f5e9d4;
+  z-index: 12;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+body .header-mobile .menu-more-mobile ul {
+  position: absolute;
+  top: 44px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+body .header-mobile .menu-more-mobile ul li a {
+  font-size: 20px;
+  color: #151514;
+  text-transform: uppercase;
+}
+body .header-mobile .menu-more-mobile ul li a:active {
+  color: #e75512;
+}
+body .header-mobile .menu-more-mobile .close-menu {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+}
+body .header-mobile .menu-more-mobile.active {
+  display: flex;
 }
 body main {
   scroll-behavior: smooth;
@@ -137,6 +283,9 @@ body main .promo .container .title p {
   font-family: "TenorSans", sans-serif;
   font-size: 35px;
 }
+body main .promo .container .title .promo-animation.hand1 {
+  display: none;
+}
 body main .promo .container .title-sand {
   position: absolute;
   top: -160px;
@@ -150,7 +299,7 @@ body main .promo .container .wave {
 body main .promo .container .scroll-btn {
   position: absolute;
   left: 700px;
-  top: 650px;
+  top: 530px;
   background-color: #e75512;
   display: flex;
   justify-content: center;
@@ -159,6 +308,7 @@ body main .promo .container .scroll-btn {
   height: 48px;
   border-radius: 25px;
   animation: blinking 2.3s infinite;
+  z-index: 10;
 }
 @keyframes blinking {
   0% {
@@ -187,7 +337,6 @@ body main .sand-show .container .sand-headtitle {
 }
 body main .sand-show .container .sand-show-info {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
   margin-bottom: 60px;
 }
@@ -280,7 +429,7 @@ body main .sand-show .container .slider-wrap .slider-bar {
   justify-content: center;
   gap: 32px;
   width: 3040px;
-  animation: scroll 30s linear infinite;
+  animation: scroll 40s linear infinite;
 }
 body main .sand-show .container .slider-wrap .slider-bar .slide {
   display: flex;
@@ -419,7 +568,7 @@ body main .activities .container .activities-grid .activity:hover .activities-ic
 body main .activities .hand-4 {
   position: absolute;
   bottom: -300px;
-  z-index: 10;
+  z-index: 2;
 }
 body main .services {
   padding: 240px 0 170px;
@@ -460,6 +609,46 @@ body main .services .container .services-grid .service {
   border-bottom: 1px solid #999999;
   border-top: 1px solid #999999;
   text-decoration: none;
+}
+body main .services .container .services-grid .service:hover .service-btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: center;
+  color: #151514;
+  cursor: pointer;
+}
+body main .services .container .services-grid .service:hover .service-btn .arrow-right-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #151514;
+  width: 24px;
+  height: 24px;
+  border-radius: 20px;
+}
+body main .services .container .services-grid .service:focus .service-btn {
+  border: none;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: space-between;
+  align-items: center;
+  color: #e75512;
+  transition: all 0.3s;
+}
+body main .services .container .services-grid .service:focus .service-btn .arrow-right-btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #151514;
+  width: 24px;
+  height: 24px;
+  border-radius: 20px;
 }
 body main .services .container .services-grid .service .service-info {
   margin-top: 24px;
@@ -511,26 +700,6 @@ body main .services .container .services-grid .service .service-btn .arrow-right
 body main .services .container .services-grid .service .service-btn .arrow-right-btn {
   width: 24px;
   height: 24px;
-}
-body main .services .container .services-grid .service .service-btn:hover {
-  border: none;
-  background-color: transparent;
-  display: flex;
-  flex-direction: row;
-  gap: 40px;
-  justify-content: space-between;
-  align-items: center;
-  color: #151514;
-  cursor: pointer;
-}
-body main .services .container .services-grid .service .service-btn:hover .arrow-right-btn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: #151514;
-  width: 24px;
-  height: 24px;
-  border-radius: 20px;
 }
 body main .services .container .services-grid .service .service-btn:focus {
   border: none;
@@ -927,6 +1096,10 @@ body main .portfolio .container .portfolio-wrap .portfolio-content.active .conte
      object-fit: cover;
   height: 397px;
 }
+body main .portfolio .container .portfolio-wrap .portfolio-content.active .content-type.active .portfolio-item iframe {
+  overflow-y: hidden;
+  height: 397px;
+}
 body main .portfolio .container .portfolio-wrap .portfolio-content.active .content-type.active .portfolio-item:nth-child(1) {
   grid-column-start: 1;
   grid-column-end: 2;
@@ -979,7 +1152,7 @@ body main .portfolio .container .btn-show-more-wrap {
 }
 body main .price {
   padding: 0 0 190px 0;
-  height: 650px;
+  max-height: 650px;
 }
 body main .price .container {
   max-width: 1300px;
@@ -998,7 +1171,7 @@ body main .price .container .price-wrap {
 }
 body main .price .container .price-wrap .price-card {
   width: 416px;
-  height: 470px;
+  max-height: 470px;
   background-color: #f5e9d4;
   border-radius: 24px;
   display: flex;
@@ -1070,7 +1243,7 @@ body main .price .container .price-wrap .price-card .requirements svg {
 body main .price .container .price-wrap .price-card .requirements-content {
   max-width: 376px;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height 0.7s ease;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -1080,14 +1253,14 @@ body main .price .container .price-wrap .price-card .requirements-content p {
   color: #999999;
 }
 body main .price .container .price-wrap .price-card.active {
-  height: 630px;
+  max-height: 630px;
 }
 body main .price .container .price-wrap .price-card.active .requirements svg {
   transform: rotate(180deg);
 }
 body main .price .container .price-wrap .price-card.active .requirements-content {
   overflow: visible;
-  height: 170px;
+  max-height: 170px;
   padding: 0 15px 15px 15px;
 }
 body main .news {
@@ -1113,7 +1286,7 @@ body main .news .container .news-wrap .news-items-wrap {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 0;
-  transition: grid-template-rows 0.3s ease;
+  transition: grid-template-rows 0.6s ease;
   -moz-column-gap: 28px;
        column-gap: 28px;
   row-gap: 48px;
@@ -1206,12 +1379,16 @@ body main .news .container .news-wrap .news-items-wrap .news-item:nth-child(n+5)
   opacity: 0;
   transition: all 0.3s ease;
   overflow: hidden;
+  width: 0;
+  height: 0;
 }
 body main .news .container .news-wrap .news-items-wrap.more {
   grid-template-rows: auto 1fr;
 }
 body main .news .container .news-wrap .news-items-wrap.more .news-item:nth-child(n+5) {
   opacity: 1;
+  width: 100%;
+  height: 100%;
 }
 body main .news .container .news-wrap .btn-show-more {
   justify-content: center;
@@ -1279,11 +1456,25 @@ body main .form .container .form-flex .form-wrap form .input-group input {
   border-bottom: 1px solid #999999;
   padding: 12px 0 12px 52px;
 }
+body main .form .container .form-flex .form-wrap form .input-group input[type=text],
+body main .form .container .form-flex .form-wrap form .input-group input[type=tel] {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+}
 body main .form .container .form-flex .form-wrap form .input-group input[type=date]:not(:focus):invalid::before {
   content: "Выберите дату";
 }
 body main .form .container .form-flex .form-wrap form .input-group input:focus {
   border: 1px solid #e75512;
+}
+body main .form .container .form-flex .form-wrap form .input-group input:-webkit-autofill,
+body main .form .container .form-flex .form-wrap form .input-group input:-webkit-autofill:hover,
+body main .form .container .form-flex .form-wrap form .input-group input:-webkit-autofill:focus,
+body main .form .container .form-flex .form-wrap form .input-group input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
+  -webkit-text-fill-color: inherit !important;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
 }
 body main .form .container .form-flex .form-wrap form .input-group ::-moz-placeholder {
   font-size: 16px;
@@ -1395,6 +1586,9 @@ body main .clients .container .clients-grid {
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(2, 1fr);
   margin-bottom: 40px;
+}
+body main .clients .container .clients-grid img:nth-child(n+17) {
+  display: none;
 }
 body main .clients .container .btn-show-more {
   margin: 0 auto;
