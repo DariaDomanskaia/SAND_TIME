@@ -830,6 +830,7 @@ body main .author .container .accordion .accordion-item {
   min-height: 64px;
   border-bottom: 1px solid #999999;
 }
+
 body main .author .container .accordion .accordion-item .accordion-header {
   cursor: pointer;
   display: flex;
@@ -982,13 +983,14 @@ body main .author .container .accordion .accordion-item.active .accordion-btn.de
   display: none;
 }
 body main .author .container .accordion .accordion-item.active .accordion-btn.default svg {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
 }
 body main .author .container .accordion .accordion-item.active .accordion-btn.active {
   display: block;
 }
-body main .author .container .accordion .accordion-item.active .accordion-btn.active svg {
-  transform: rotate(180deg);
+body main .author .container .accordion:not(#works-accordion) .accordion-item.active .accordion-btn.active svg {
+    transform: rotate(180deg);
 }
 body main .author .hand-5 {
   display: none;
@@ -1793,3 +1795,17 @@ body footer .container .footer-wrap .footer-nav ul {
   -moz-column-gap: 120px;
        column-gap: 120px;
 }/*# sourceMappingURL=stylesheet.css.map */
+
+/* ТОЛЬКО управление видимостью - без трансформаций */
+#works-accordion .accordion-btn.default {
+    display: block;
+}
+#works-accordion .accordion-btn.active {
+    display: none;
+}
+#works-accordion .accordion-item.active .accordion-btn.default {
+    display: none;
+}
+#works-accordion .accordion-item.active .accordion-btn.active {
+    display: block;
+}

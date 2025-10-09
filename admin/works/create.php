@@ -66,10 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
         $workId = $pdo->lastInsertId();
         
-        $success = 'Работа успешно добавлена! ID: ' . $workId;
-        
-        // Редирект на редактирование для загрузки изображений
-        $_SESSION['success'] = $success;
+        $_SESSION['success'] = 'Работа успешно создана! Теперь добавьте изображения (минимум 3).';
         header('Location: edit.php?id=' . $workId);
         exit;
 
@@ -136,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
 
                         <div class="mb-3">
-                            <label for="year" class="form-label">Год создания *</label>
+                            <label for="year" class="form-label">Год проведения работы *</label>
                             <input type="text" class="form-control" id="year" name="year" 
                                    value="<?= isset($_POST['year']) ? htmlspecialchars($_POST['year']) : date('Y') ?>" 
                                    maxlength="4" pattern="\d{4}" required placeholder="2024">

@@ -1,7 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const accordion = document.querySelector('.accordion');
-    const accordionItems = document.querySelectorAll('.accordion-item');
-    const accordionBodies = document.querySelectorAll('.accordion-body');
+function initAccordion() {
+    // Работаем только со статическим аккордеоном (без ID)
+    const accordion = document.querySelector('.accordion:not([id])');
+    if (!accordion) return;
+
+    const accordionItems = accordion.querySelectorAll('.accordion-item');
+    const accordionBodies = accordion.querySelectorAll('.accordion-body');
 
     // Инициализация: закрываем все аккордеоны при загрузке
     accordionBodies.forEach(body => {
@@ -10,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     accordion.addEventListener('click', function (event) {
-        // Проверяем, был ли клик по заголовку аккордеона или его дочерним элементам
         const header = event.target.closest('.accordion-header');
         if (!header) return;
 
@@ -29,55 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
         // Если аккордеон не был активен, открываем его
         if (!isActive) {
             item.classList.add('active');
-            // Устанавливаем небольшую задержку для плавной анимации
             setTimeout(() => {
-                body.style.maxHeight = '500px';
+                body.style.maxHeight = body.scrollHeight + 'px';
                 body.style.opacity = '1';
             }, 10);
         }
     });
+}
 
-    // Инициализация слайдеров
-    function initSliders() {
-        const sliders = document.querySelectorAll('.slider');
-
-        sliders.forEach(slider => {
-            const container = slider.querySelector('.slider-container');
-            const slides = slider.querySelectorAll('.slider-slide');
-            const bullets = slider.querySelectorAll('.slider-bullet');
-            const prevBtn = slider.querySelector('.slider-arrow.prev');
-            const nextBtn = slider.querySelector('.slider-arrow.next');
-
-            let currentSlide = 0;
-
-            // Функция для переключения слайдов
-            function goToSlide(index) {
-                if (index < 0) index = slides.length - 1;
-                if (index >= slides.length) index = 0;
-
-                currentSlide = index;
-                container.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-                // Обновляем пагинацию
-                bullets.forEach((bullet, i) => {
-                    bullet.classList.toggle('active', i === currentSlide);
-                });
-            }
-
-            // Обработчики событий для стрелок
-            prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
-            nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
-
-            // Обработчики событий для пагинации
-            bullets.forEach((bullet, index) => {
-                bullet.addEventListener('click', () => goToSlide(index));
-            });
-
-            // Инициализация первого слайда
-            goToSlide(0);
-        });
-    }
-
-    // Инициализируем слайдеры после загрузки DOM
-    initSliders();
-});
+export { initAccordion };

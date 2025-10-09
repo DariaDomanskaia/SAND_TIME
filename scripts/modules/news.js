@@ -1,6 +1,14 @@
-const newsGrid = document.getElementById('newsGrid');
-const showMoreBtn = document.getElementById('showMoreBtn');
+function initNews() {
+    const newsGrid = document.getElementById('newsGrid');
+    const showMoreBtn = document.getElementById('showMoreBtn');
 
-showMoreBtn.addEventListener('click', function () {
-    const isExpanded = newsGrid.classList.toggle('more');
-});
+    if (!newsGrid || !showMoreBtn) return;
+
+    showMoreBtn.addEventListener('click', function () {
+        const isExpanded = newsGrid.classList.toggle('more');
+    });
+
+    console.log('Новости инициализированы');
+}
+
+export { initNews };

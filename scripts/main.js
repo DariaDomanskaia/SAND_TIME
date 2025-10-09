@@ -1,12 +1,12 @@
 import { initImageErrorHandling } from './utils.js';
-import { } from './modules/services.js';
-import { } from './modules/author.js';
-import { } from './modules/works.js';
-import { } from './modules/accordion.js';
-import { } from './modules/sliders.js';
-import { } from './modules/portfolio.js';
-import { } from './modules/price.js';
-import { } from './modules/news.js';
+import { loadServices } from './modules/services.js';
+import { loadAuthor } from './modules/author.js';
+import { initWorks } from './modules/works.js';
+import { initAccordion } from './modules/accordion.js';
+import { initSliders } from './modules/sliders.js';
+import { initPortfolio } from './modules/portfolio.js';
+import { initPrice } from './modules/price.js';
+import { initNews } from './modules/news.js';
 
 // Инициализация при загрузке DOM
 document.addEventListener('DOMContentLoaded', function () {

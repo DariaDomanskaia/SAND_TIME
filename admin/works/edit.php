@@ -40,7 +40,7 @@ try {
     $stmt->execute([$workId]);
     $images = $stmt->fetchAll();
 } catch (Exception $e) {
-    $images = [];
+    $images = array();
 }
 
 // Обработка обновления данных работы
@@ -52,9 +52,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_work'])) {
         }
 
         // Валидация данных
-        $title = trim($_POST['title'] ?? '');
-        $description = trim($_POST['description'] ?? '');
-        $year = trim($_POST['year'] ?? '');
+        $title = trim(isset($_POST['title']) ? $_POST['title'] : '');
+        $description = trim(isset($_POST['description']) ? $_POST['description'] : '');
+        $year = trim(isset($_POST['year']) ? $_POST['year'] : '');
 
         // Проверка заголовка
         if (empty($title)) {
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_work'])) {
 
         // Обновляем данные работы
         $stmt = $pdo->prepare("UPDATE works SET title = ?, description = ?, year = ?, updated_at = NOW() WHERE id = ?");
-        $stmt->execute([$title, $description, $year, $workId]);
+        $stmt->execute(array($title, $description, $year, $workId));
         
         $_SESSION['success'] = 'Данные работы успешно обновлены!';
         header('Location: edit.php?id=' . $workId);
@@ -134,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload_images'])) {
             $fileSize = $_FILES['images']['size'][$index];
 
             // Проверяем тип файла
-            $allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
+            $allowedTypes = array('image/jpeg', 'image/png', 'image/webp');
             if (!in_array($fileType, $allowedTypes)) {
                 continue; // Пропускаем невалидные файлы
             }
@@ -151,14 +151,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload_images'])) {
 
             // Пытаемся загрузить файл
             if (move_uploaded_file($tmpName, $filePath)) {
-                // Сохраняем в базу данных
-                $relativePath = 'uploads/works/' . $newFileName;
+                // Сохраняем в базу данных - ПРАВИЛЬНЫЙ ПУТЬ!
+                $relativePath = 'admin/uploads/works/' . $newFileName;
                 
                 // Определяем порядок сортировки
                 $sortOrder = $currentImagesCount + $uploadedCount;
                 
                 $stmt = $pdo->prepare("INSERT INTO work_images (work_id, image_path, sort_order) VALUES (?, ?, ?)");
-                $stmt->execute([$workId, $relativePath, $sortOrder]);
+                $stmt->execute(array($workId, $relativePath, $sortOrder));
                 
                 $uploadedCount++;
             }
@@ -184,18 +184,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_image'])) {
         
         // Получаем путь к файлу для удаления
         $stmt = $pdo->prepare("SELECT image_path FROM work_images WHERE id = ? AND work_id = ?");
-        $stmt->execute([$imageId, $workId]);
+        $stmt->execute(array($imageId, $workId));
         $image = $stmt->fetch();
         
         if ($image) {
             // Удаляем файл с сервера
             if (file_exists($image['image_path'])) {
-            unlink($image['image_path']);
+                unlink($image['image_path']);
             }
             
             // Удаляем запись из БД
             $stmt = $pdo->prepare("DELETE FROM work_images WHERE id = ?");
-            $stmt->execute([$imageId]);
+            $stmt->execute(array($imageId));
             
             $_SESSION['success'] = 'Изображение успешно удалено!';
             header('Location: edit.php?id=' . $workId);
@@ -212,14 +212,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_image'])) {
 <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h1>Редактирование работы</h1>
-        <a href="<?= $base_path ?>works/" class="btn btn-outline-secondary">
+        <a href="<?php echo $base_path; ?>works/" class="btn btn-outline-secondary">
             <i class="bi bi-arrow-left"></i> Назад к списку
         </a>
     </div>
 
     <?php if (isset($_SESSION['success'])): ?>
         <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <?= htmlspecialchars($_SESSION['success']) ?>
+            <?php echo htmlspecialchars($_SESSION['success']); ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
         <?php unset($_SESSION['success']); ?>
@@ -227,7 +227,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_image'])) {
 
     <?php if (isset($_SESSION['error'])): ?>
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <?= htmlspecialchars($_SESSION['error']) ?>
+            <?php echo htmlspecialchars($_SESSION['error']); ?>
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
         <?php unset($_SESSION['error']); ?>
@@ -243,40 +243,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_image'])) {
                 <div class="card-body">
                     <?php if ($error && isset($_POST['update_work'])): ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Ошибка:</strong> <?= htmlspecialchars($error) ?>
+                            <strong>Ошибка:</strong> <?php echo htmlspecialchars($error); ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                     <?php endif; ?>
 
-                    <form action="edit.php?id=<?= $workId ?>" method="POST">
-                        <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+                    <form action="edit.php?id=<?php echo $workId; ?>" method="POST">
+                        <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                         <input type="hidden" name="update_work" value="1">
                         
                         <div class="mb-3">
                             <label for="title" class="form-label">Заголовок *</label>
                             <input type="text" class="form-control" id="title" name="title" 
-                                   value="<?= htmlspecialchars($work['title']) ?>" 
+                                   value="<?php echo htmlspecialchars($work['title']); ?>" 
                                    maxlength="70" required>
                             <div class="form-text">Максимум 70 символов</div>
                             <div class="text-muted text-end">
-                                <span id="titleCount"><?= mb_strlen($work['title'], 'UTF-8') ?></span>/70 символов
+                                <span id="titleCount"><?php echo mb_strlen($work['title'], 'UTF-8'); ?></span>/70 символов
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="description" class="form-label">Описание *</label>
                             <textarea class="form-control" id="description" name="description" 
-                                      rows="4" maxlength="120" required><?= htmlspecialchars($work['description']) ?></textarea>
+                                      rows="4" maxlength="120" required><?php echo htmlspecialchars($work['description']); ?></textarea>
                             <div class="form-text">Максимум 120 символов</div>
                             <div class="text-muted text-end">
-                                <span id="descCount"><?= mb_strlen($work['description'], 'UTF-8') ?></span>/120 символов
+                                <span id="descCount"><?php echo mb_strlen($work['description'], 'UTF-8'); ?></span>/120 символов
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="year" class="form-label">Год создания *</label>
                             <input type="text" class="form-control" id="year" name="year" 
-                                   value="<?= htmlspecialchars($work['year']) ?>" 
+                                   value="<?php echo htmlspecialchars($work['year']); ?>" 
                                    maxlength="4" pattern="\d{4}" required>
                             <div class="form-text">Год из 4 цифр</div>
                         </div>
@@ -298,7 +298,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_image'])) {
                 <div class="card-body">
                     <?php if ($error && (isset($_POST['upload_images']) || isset($_POST['delete_image']))): ?>
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <strong>Ошибка:</strong> <?= htmlspecialchars($error) ?>
+                            <strong>Ошибка:</strong> <?php echo htmlspecialchars($error); ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
                     <?php endif; ?>
@@ -306,8 +306,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_image'])) {
                     <!-- Форма загрузки изображений -->
                     <div class="mb-4">
                         <h6>Добавить изображения</h6>
-                        <form action="edit.php?id=<?= $workId ?>" method="POST" enctype="multipart/form-data" id="uploadForm">
-                            <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+                        <form action="edit.php?id=<?php echo $workId; ?>" method="POST" enctype="multipart/form-data" id="uploadForm">
+                            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                             <input type="hidden" name="upload_images" value="1">
                             
                             <div class="mb-3">
@@ -320,11 +320,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_image'])) {
                             </div>
 
                             <div class="alert alert-warning">
-                                <small>
-                                    <i class="bi bi-exclamation-triangle"></i> 
-                                    <strong>Требования:</strong> Минимум 3 изображения, максимум 9. Сейчас: <?= count($images) ?> из 9.
-                                </small>
-                            </div>
+    <small>
+        <i class="bi bi-exclamation-triangle"></i> 
+        <strong>Требования:</strong> Минимум 3 изображения, максимум 9. Сейчас: <?php echo count($images); ?> из 9.
+        <?php if (count($images) < 3): ?>
+            <br><strong class="text-danger">ВНИМАНИЕ:</strong> Необходимо загрузить еще <?php echo 3 - count($images); ?> изображений для корректного отображения на сайте!
+        <?php endif; ?>
+    </small>
+</div>
 
                             <button type="submit" class="btn btn-success" id="uploadBtn">
                                 <i class="bi bi-upload"></i> Загрузить изображения
@@ -334,7 +337,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_image'])) {
 
                     <!-- Список текущих изображений -->
                     <div>
-                        <h6>Текущие изображения (<?= count($images) ?>)</h6>
+                        <h6>Текущие изображения (<?php echo count($images); ?>)</h6>
                         <?php if (empty($images)): ?>
                             <div class="alert alert-info">
                                 <i class="bi bi-info-circle"></i> Изображения еще не добавлены
@@ -344,15 +347,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_image'])) {
                                 <?php foreach ($images as $image): ?>
                                 <div class="col-6 col-md-4">
                                     <div class="card">
-                                        <img src="/<?= htmlspecialchars($image['image_path']) ?>" 
+                                        <img src="/<?php echo htmlspecialchars($image['image_path']); ?>" 
                                              class="card-img-top" 
                                              alt="Изображение работы"
-                                             style="height: 100px; object-fit: cover;">
+                                             style="height: 100px; object-fit: cover;"
+                                             onerror="this.src='/images/placeholder-work.jpg'">
                                         <div class="card-body p-2">
-                                            <form action="edit.php?id=<?= $workId ?>" method="POST" class="d-grid">
-                                                <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
+                                            <form action="edit.php?id=<?php echo $workId; ?>" method="POST" class="d-grid">
+                                                <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
                                                 <input type="hidden" name="delete_image" value="1">
-                                                <input type="hidden" name="image_id" value="<?= $image['id'] ?>">
+                                                <input type="hidden" name="image_id" value="<?php echo $image['id']; ?>">
                                                 <button type="submit" class="btn btn-sm btn-outline-danger" 
                                                         onclick="return confirm('Удалить это изображение?')">
                                                     <i class="bi bi-trash"></i>
@@ -420,7 +424,7 @@ document.getElementById('year').addEventListener('input', function(e) {
 // Валидация формы загрузки изображений
 document.getElementById('uploadForm').addEventListener('submit', function(e) {
     const files = document.getElementById('images').files;
-    const currentImagesCount = <?= count($images) ?>;
+    const currentImagesCount = <?php echo count($images); ?>;
     
     if (files.length === 0) {
         e.preventDefault();

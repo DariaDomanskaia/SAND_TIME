@@ -1,8 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
+function initPortfolio() {
     const showMoreBtn = document.querySelector('.show-more-btn');
     const navItems = document.querySelectorAll('.portfolio-nav-item');
     const toggleButtons = document.querySelectorAll('.toggle-btn');
     const portfolioContents = document.querySelectorAll('.portfolio-content');
+
+    if (!showMoreBtn || navItems.length === 0) return;
 
     // Обработчик переключателя контента
     toggleButtons.forEach(button => {
@@ -81,4 +83,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     });
-});
+
+    console.log('Портфолио инициализировано');
+}
+
+export { initPortfolio };
