@@ -10,7 +10,9 @@ $active_section = '';
 
 if (strpos($current_script, '/works/') !== false) {
     $active_section = 'works';
-} elseif (basename($current_script) == 'index.php' && strpos($current_script, '/works/') === false) {
+} elseif (strpos($current_script, '/portfolio/') !== false) {
+    $active_section = 'portfolio';
+} elseif (basename($current_script) == 'index.php' && strpos($current_script, '/works/') === false && strpos($current_script, '/portfolio/') === false) {
     $active_section = 'services';
 } elseif (basename($current_script) == 'author.php') {
     $active_section = 'author';
@@ -59,13 +61,14 @@ if (strpos($current_script, '/works/') !== false) {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                           <i class="bi bi-tags"></i> Цены
+                        <a class="nav-link <?= ($active_section == 'portfolio') ? 'active' : '' ?>" 
+                           href="<?= $base_path ?>portfolio/">
+                           <i class="bi bi-images"></i> Портфолио
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">
-                           <i class="bi bi-images"></i> Галерея
+                           <i class="bi bi-tags"></i> Цены
                         </a>
                     </li>
                 </ul>

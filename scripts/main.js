@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initAccordion();
     initSliders();
 
+
     // Инициализация других модулей
     initPortfolio();
     initPrice();
